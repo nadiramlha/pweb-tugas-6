@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Belajar Form Validation</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <form
+        name="formPendaftaran"
+        action="daftar.php"
+        method="post"
+        onsubmit="return validateForm()"
+      >
+        <div class="form-group">
+          <label>Nama</label>
+          <input
+            type="text"
+            name="nama"
+            placeholder="Nama lengkap"
+            class="form-control"
+            required
+            maxlength="40"
+            minlength="3"
+          />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Aktif"
+            class="form-control"
+            required
+          />
+          <small id="emailHelp" class="form-text text-muted">
+            Email Akan Digunakan Untuk Mengirimkan Notifikasi.
+          </small>
+        </div>
+        <div class="form-group">
+          <label>Fakultas</label>
+          <select name="fakultas" class="form-control">
+            <option value="0">Pilih Fakultas</option>
+            <option value="1">FAKULTAS TEKNOLOGI INDUSTRI DAN REKAYASA SISTEM (FT-IRS)</option>
+            <option value="2">FAKULTAS TEKNOLOGI ELEKTRO DAN INFORMATIKA CERDAS (FT-EIC)</option>
+            <option value="3">FAKULTAS TEKNIK SIPIL, PERENCANAAN, DAN KEBUMIAN (FT-SPK)</option>
+            <option value="4">FAKULTAS SAINS DAN ANALITIKA DATA (FSAD)</option>
+            <option value="5">FAKULTAS TEKNOLOGI KELAUTAN (FTK)</option>
+            <option value="6">FAKULTAS DESAIN KREATIF DAN BISNIS DIGITAL (F-DKBD)</option>
+            <option value="7">FAKULTAS VOKASI (FV)</option>
+            <option value="8">FAKULTAS KEDOKTERAN DAN KESEHATAN</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Dosen</label>
+          <input
+            type="text"
+            name="dosen"
+            placeholder="Dosen"
+            class="form-control"
+            required
+            maxlength="40"
+            minlength="3"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <script>
+      function validateForm() {
+        if (document.forms["formPendaftaran"]["nama"].value == "") {
+          alert("Nama Tidak Boleh Kosong");
+          document.forms["formPendaftaran"]["nama"].focus();
+          return false;
+        }
+        if (document.forms["formPendaftaran"]["email"].value == "") {
+          alert("Email Tidak Boleh Kosong");
+          document.forms["formPendaftaran"]["email"].focus();
+          return false;
+        }
+        if (document.forms["formPendaftaran"]["jurusan"].selectedIndex < 1) {
+          alert("Pilih Jurusan.");
+          document.forms["formPendaftaran"]["jurusan"].focus();
+          return false;
+        }
+        if (document.forms["formPendaftaran"]["dosen"].value == "") {
+          alert("Dosen Tidak Boleh Kosong");
+          document.forms["formPendaftaran"]["dosen"].focus();
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
